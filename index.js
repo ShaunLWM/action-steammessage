@@ -15,8 +15,10 @@ client.logOn({
 
 client.on("loggedOn", async (details) => {
 	console.log("Logged into Steam as " + client.steamID.getSteam3RenderedID());
+	client.setPersona(SteamUser.EPersonaState.Online);
 	client.chatTyping(core.getInput("steamAdminId"))
 	client.chatMessage(core.getInput("steamAdminId"), core.getInput("steamMessage"));
 	await sleep(2000);
 	client.logOff();
+	process.exit();
 });

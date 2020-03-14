@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const SteamUser = require("steam-user");
+const SteamTotp = require("steam-totp");
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -8,7 +9,8 @@ function sleep(ms) {
 const client = new SteamUser();
 client.logOn({
 	"accountName": process.env.STEAM_USERNAME,
-	"password": process.env.STEAM_PASSWORD
+	"password": process.env.STEAM_PASSWORD,
+	"twoFactorCode": SteamTotp.generateAuthCode(process.env.STEAM_SECRET)
 });
 
 client.on("loggedOn", async (details) {

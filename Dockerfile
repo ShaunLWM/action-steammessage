@@ -9,6 +9,8 @@ LABEL "com.github.actions.description"="Send a message to Steam."
 LABEL "com.github.actions.icon"="smartphone"
 LABEL "com.github.actions.color"="blue"
 
-ADD entrypoint.sh /entrypoint.sh
+COPY index.js /index.js
+COPY package.json /package.json
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

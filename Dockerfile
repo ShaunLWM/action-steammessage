@@ -11,4 +11,4 @@ LABEL "com.github.actions.color"="blue"
 
 COPY package.json index.js yarn.lock /
 RUN yarn install
-ENTRYPOINT ["node", :="/index.js"]
+ENTRYPOINT ["node", "/index.js"]

@@ -8,10 +8,9 @@ const REQUIRED_ENV = [
 	'STEAM_SECRET',
 ];
 
-
 const missing = [];
 REQUIRED_ENV.forEach(key => {
-	if (!process.env[key]) missing.push(key);
+	if (!process.env[key] || process.env[key].length < 1) missing.push(key);
 });
 
 if (missing.length > 0) throw new Error(`Missing required environment variables ${missing.join(', ')}`);
@@ -32,6 +31,7 @@ client.on("loggedOn", async (details) => {
 	client.setPersona(SteamUser.EPersonaState.Online);
 	client.chatTyping(core.getInput("steamAdminId"))
 	client.chatMessage(core.getInput("steamAdminId"), core.getInput("steamMessage"));
+	console.log(`Done sending message to ${core.getInput("steamAdminId")}`);
 	await sleep(2000);
 	client.logOff();
 	process.exit();

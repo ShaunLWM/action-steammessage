@@ -9,6 +9,6 @@ LABEL "com.github.actions.description"="Send a message to Steam."
 LABEL "com.github.actions.icon"="smartphone"
 LABEL "com.github.actions.color"="blue"
 
-ENTRYPOINT ["/"]
-RUN npm install
-CMD ["node index.js"]
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

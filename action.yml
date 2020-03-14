@@ -1,0 +1,16 @@
+name: "action-steammessage"
+description: "Send a Steam message on push"
+author: "ShaunLWM"
+branding:
+  icon: "smartphone"
+  color: "blue"
+inputs:
+  steamAdminId:
+    description: "Admin Id to send to"
+    required: true
+  steamMessage:
+    description: "Message to be sent"
+    required: true
+runs:
+  using: "node12"
+  main: "dist/index.js"

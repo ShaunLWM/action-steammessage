@@ -1,0 +1,12 @@
+{
+  "name": "action-steammessage",
+  "version": "0.0.1-alpha.1",
+  "main": "index.js",
+  "repository": "git@github.com:ShaunLWM/action-steammessage.git",
+  "author": "ShaunLWM",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "steam-user": "^4.13.2"
+  }
+}

@@ -1,4 +1,4 @@
-FROM node:12-alphine
+FROM node:12-alpine
 
 RUN npm install
 CMD node index.js

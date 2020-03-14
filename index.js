@@ -2,6 +2,20 @@ const core = require("@actions/core");
 const SteamUser = require("steam-user");
 const SteamTotp = require("steam-totp");
 
+const REQUIRED_ENV = [
+	'STEAM_USERNAME',
+	'STEAM_PASSWORD',
+	'STEAM_SECRET',
+];
+
+
+const missing = [];
+REQUIRED_ENV.forEach(key => {
+	if (!process.env[key]) missing.push(key);
+});
+
+if (missing.length > 0) throw new Error(`Missing required environment variables ${missing.join(', ')}`);
+
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
